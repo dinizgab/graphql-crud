@@ -1,20 +1,11 @@
 import { ApolloServer, gql } from "apollo-server";
+import resolvers from "./graphql/resolvers";
+import typeDefs from "./graphql/typeDefs";
 
 const corsConfigs = {
   origin: "https://studio.apollographql.com",
   credentials: true,
 }
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello World",
-  },
-};
 
 const app = new ApolloServer({ typeDefs, resolvers, cors: corsConfigs });
 
